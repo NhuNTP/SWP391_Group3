@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : UpdateCoupon
     Created on : Feb 23, 2025, 2:46:50 PM
     Author     : DELL-Laptop
@@ -34,28 +34,28 @@
                     <div class="form-group">
                         <div class="control-label col-md-2">Coupon ID</div>
                         <div class="col-md-10">
-                            <input type="text" readonly="true" class="form-control" value="${param.couponId}" name="couponId" required/>
+                            <input type="text" readonly="true" class="form-control" value="<% out.print(request.getParameter("couponId")); %>" name="couponId" required/>
                         </div>
                     </div>
 
-                 
+
                     <div class="form-group">
                         <div class="control-label col-md-2">Discount Amount</div>
                         <div class="col-md-10">
-                            <input type="number" step="0.01" class="form-control" value="${param.discountAmount}" name="discountAmount"required/>
+                            <input type="number" step="0.01" class="form-control" value="<% out.print(request.getParameter("discountAmount")); %>" name="discountAmount"required/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="control-label col-md-2">Expiration Date</div>
                         <div class="col-md-10">
-                            <input type="date" class="form-control" value="${param.expirationDate}" name="expirationDate"required/>
+                            <input type="date" class="form-control" value="<% out.print(request.getParameter("expirationDate")); %>" name="expirationDate"required/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Update" class="btn btn-warning" /> 
+                            <input type="submit" value="Update" class="btn btn-warning" />
                             <a href="../ViewCouponController" class="btn btn-info">Back to list</a>
                         </div>
                     </div>

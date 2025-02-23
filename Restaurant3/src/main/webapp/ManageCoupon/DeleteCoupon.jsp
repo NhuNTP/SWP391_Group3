@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : DeleteCoupon
     Created on : Feb 23, 2025, 7:56:53 PM
     Author     : DELL-Laptop
@@ -34,33 +34,33 @@
                     <div class="form-group">
                         <div class="control-label col-md-2">Coupon ID</div>
                         <div class="col-md-10">
-                            <input type="text" readonly="true" class="form-control" value="${param.couponId}" name="couponId" required/>
+                            <input type="text" readonly="true" class="form-control" value="<% out.print(request.getParameter("couponId")); %>" name="couponId" required/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="control-label col-md-2">Discount Amount</div>
                         <div class="col-md-10">
-                            <input type="number"readonly="true"  class="form-control" value="${param.discountAmount}" name="discountAmount"required/>
+                            <input type="number"readonly="true"  class="form-control" value="<% out.print(request.getParameter("discountAmount")); %>" name="discountAmount"required/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="control-label col-md-2">Expiration Date</div>
                         <div class="col-md-10">
-                            <input type="date"readonly="true"  class="form-control" value="${param.expirationDate}" name="expirationDate"required/>
+                            <input type="date"readonly="true"  class="form-control" value="<% out.print(request.getParameter("expirationDate")); %>" name="expirationDate"required/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="control-label col-md-2">Status</div>
                         <div class="col-md-10">
-                            <input type="text"readonly="true"  class="form-control" value="${param.isUsed}" name="isUsed"required/>
+                            <input type="text"readonly="true"  class="form-control" value="<% out.print(request.getParameter("isUsed")); %>" name="isUsed"required/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <form action="../DeleteCouponController" method="GET"> <!-- Gửi yêu cầu đến DeleteServlet -->
-                            <input type="hidden" name="couponId" value="${param.couponId}" /> <!-- Ẩn id để gửi -->
+                            <input type="hidden" name="couponId" value="<% out.print(request.getParameter("couponId")); %>" /> <!-- Ẩn id để gửi -->
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="Delete" class="btn btn-primary" />
                                 <a href="../ViewCouponController" class="btn btn-danger">Back to list</a>

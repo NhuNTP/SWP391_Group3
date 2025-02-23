@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : AddCoupon
     Created on : Feb 23, 2025, 11:29:14 AM
     Author     : DELL-Laptop
@@ -29,7 +29,7 @@
             <div class="form-horizontal">
                 <h5>New</h5>
                 <hr />
-                <form action="../AddCoupon" method="POST">
+                <form action="../AddCouponController" method="POST">
                     <div class="form-group">
                         <label class="control-label col-md-2">Discount Amount</label>
                         <div class="col-md-10">
@@ -53,8 +53,14 @@
                     </div>
                 </form>
             </div>
-            <h3 style="color: red"> ${requestScope.error}</h3>
+            <h3 style="color: red">
+                <%
+                    String error = (String) request.getAttribute("error");
+                    if (error != null && !error.isEmpty()) {
+                        out.print(error);
+                    }
+                %>
+            </h3>
         </div>
     </body>
 </html>
-
