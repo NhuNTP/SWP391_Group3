@@ -1,11 +1,10 @@
-<%-- 
+<%--
     Document   : ViewCoupon
     Created on : Feb 22, 2025, 10:08:13 AM
     Author     : DELL-Laptop
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,36 +41,49 @@
                     <th>Expiration Date</th>
                     <th>Coupon Status</th>
                 </tr>
-                <c:forEach items="${requestScope.couponList}" var="coupon">
+                <%
+                    java.util.List<Model.Coupon> couponList = (java.util.List<Model.Coupon>) request.getAttribute("couponList");
+                    if (couponList != null && !couponList.isEmpty()) {
+                        for (Model.Coupon coupon : couponList) {
+                %>
                     <tr>
-                        <Td valign="middle">${coupon.couponId}</td>
-                        <Td valign="middle">${coupon.discountAmount}</td>
-                        <Td valign="middle">${coupon.expirationDate}</td>
-                        <Td valign="middle">${coupon.isUsed?'Used':'Not Used'}</td>
+                        <Td valign="middle"><% out.print(coupon.getCouponId()); %></td>
+                        <Td valign="middle"><% out.print(coupon.getDiscountAmount()); %></td>
+                        <Td valign="middle"><% out.print(coupon.getExpirationDate()); %></td>
+                        <Td valign="middle"><% out.print(coupon.isIsUsed() ? "Used" : "Not Used"); %></td>
 
                         <Td valign="middle">
 
 
-                            <form action="ManageCoupon/UpdateCoupon.jsp?couponID=${coupon.couponId}" method="post" style="display:inline;">
-                                <input type="hidden" name="couponId" value="${coupon.couponId}">
-                                <input type="hidden" name="discountAmount" value="${coupon.discountAmount}">
-                                <input type="hidden" name="expirationDate" value="${coupon.expirationDate}">
-                                <input type="hidden" name="isUsed" value="${coupon.isUsed?'Used':'Not Used'}">
+                            <form action="ManageCoupon/UpdateCoupon.jsp?couponID=<% out.print(coupon.getCouponId()); %>" method="post" style="display:inline;">
+                                <input type="hidden" name="couponId" value="<% out.print(coupon.getCouponId()); %>">
+                                <input type="hidden" name="discountAmount" value="<% out.print(coupon.getDiscountAmount()); %>">
+                                <input type="hidden" name="expirationDate" value="<% out.print(coupon.getExpirationDate()); %>">
+                                <input type="hidden" name="isUsed" value="<% out.print(coupon.isIsUsed() ? "Used" : "Not Used"); %>">
 
                                 <button type="submit" class="btn btn-warning">Update</button>
                             </form>
 
                             <form action="ManageCoupon/DeleteCoupon.jsp" method="post" style="display:inline;">
-                                <input type="hidden" name="couponId" value="${coupon.couponId}">
-                                <input type="hidden" name="discountAmount" value="${coupon.discountAmount}">
-                                <input type="hidden" name="expirationDate" value="${coupon.expirationDate}">
-                                <input type="hidden" name="isUsed" value="${coupon.isUsed?'Used':'Not Used'}">
+                                <input type="hidden" name="couponId" value="<% out.print(coupon.getCouponId()); %>">
+                                <input type="hidden" name="discountAmount" value="<% out.print(coupon.getDiscountAmount()); %>">
+                                <input type="hidden" name="expirationDate" value="<% out.print(coupon.getExpirationDate()); %>">
+                                <input type="hidden" name="isUsed" value="<% out.print(coupon.isIsUsed() ? "Used" : "Not Used"); %>">
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>
 
-                </c:forEach>
+                <%
+                        } // end for loop
+                    } else {
+                %>
+                    <tr>
+                        <td colspan="5">No coupons available.</td>
+                    </tr>
+                <%
+                    } // end if couponList not null and not empty
+                %>
 
 
             </table>
