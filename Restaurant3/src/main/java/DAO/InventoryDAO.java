@@ -53,31 +53,5 @@ public class InventoryDAO extends DB.DBContext {
     }
     
  
-    public static void main(String[] args) {
-        InventoryDAO inventoryDAO = new InventoryDAO(); // Tạo instance của InventoryDAO
-
-        List<Inventory> inventoryItemList = getAllItem(); // Gọi hàm getAllItem()
-
-        if (inventoryItemList != null) {
-            System.out.println("--- Inventory Item List ---");
-            if (inventoryItemList.isEmpty()) {
-                System.out.println("No inventory items found in the database.");
-            } else {
-                for (Inventory inventoryItem : inventoryItemList) {
-                    System.out.println("--- Inventory Item ID: " + inventoryItem.getItemId() + " ---");
-                    System.out.println("ItemName: " + inventoryItem.getItemName());
-                    System.out.println("ItemType: " + inventoryItem.getItemType());
-                    System.out.println("ItemPrice: " + inventoryItem.getItemPrice());
-                    System.out.println("ItemQuantity: " + inventoryItem.getItemQuantity());
-                    System.out.println("ItemUnit: " + inventoryItem.getItemUnit());
-                    System.out.println("ItemDescription: " + inventoryItem.getItemDescription());
-                    System.out.println("-----------------------");
-                }
-                System.out.println("Total Inventory Items in List: " + inventoryItemList.size());
-            }
-        } else {
-            System.out.println("Error: Failed to retrieve inventory items. Check console output for errors in getAllItem() method.");
-        }
-    }
 }
 
