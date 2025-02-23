@@ -17,34 +17,27 @@ public class DishInventory {
     public DishInventory() {
     }
 
-    public DishInventory(int DishId, int ItemId, int QuantityUsed) {
-        this.DishId = DishId;
-        this.ItemId = ItemId;
-        this.QuantityUsed = QuantityUsed;
-    }
-
-    // Getter và Setter
     public int getDishId() {
         return DishId;
     }
 
-    public void setDishId(int DishId) {
-        this.DishId = DishId;
+    public void setDishId(int dishId) {
+        this.DishId = dishId;
     }
 
     public int getItemId() {
         return ItemId;
     }
 
-    public void setItemId(int ItemId) {
-        this.ItemId = ItemId;
+    public void setItemId(int itemId) {
+        this.ItemId = itemId;
     }
 
     public int getQuantityUsed() {
         return QuantityUsed;
     }
 
-    public void setQuantityUsed(int QuantityUsed) {
-        this.QuantityUsed = QuantityUsed;
+    public void setQuantityUsed(int quantityUsed) {
+        this.QuantityUsed = quantityUsed;
     }
 }

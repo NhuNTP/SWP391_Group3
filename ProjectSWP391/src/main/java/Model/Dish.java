@@ -8,85 +8,70 @@ package Model;
  *
  * @author LxP
  */
-import java.util.List;
-
 public class Dish {
-
-    private int dishId;
-    private String dishName;
-    private String dishType;
-    private double dishPrice;
-    private String dishDescription;
-    private String dishImage;
-    private List<DishInventory> ingredients; // Danh sách nguyên liệu
+    private int DishId;
+    private String DishName;
+    private String DishType;
+    private double DishPrice;
+    private String DishDescription;
+    private String DishImage;
 
     public Dish() {
     }
 
-    public Dish(int dishId, String dishName, String dishType, double dishPrice, String dishDescription, String dishImage, List<DishInventory> ingredients) {
-        this.dishId = dishId;
-        this.dishName = dishName;
-        this.dishType = dishType;
-        this.dishPrice = dishPrice;
-        this.dishDescription = dishDescription;
-        this.dishImage = dishImage;
-        this.ingredients = ingredients;
+    public Dish(String dishName, String dishType, double dishPrice, String dishDescription, String dishImage) {
+        this.DishName = dishName;
+        this.DishType = dishType;
+        this.DishPrice = dishPrice;
+        this.DishDescription = dishDescription;
+        this.DishImage = dishImage;
     }
 
-    // Getter và Setter
     public int getDishId() {
-        return dishId;
+        return DishId;
     }
 
     public void setDishId(int dishId) {
-        this.dishId = dishId;
+        this.DishId = dishId;
     }
 
     public String getDishName() {
-        return dishName;
+        return DishName;
     }
 
     public void setDishName(String dishName) {
-        this.dishName = dishName;
+        this.DishName = dishName;
     }
 
     public String getDishType() {
-        return dishType;
+        return DishType;
     }
 
     public void setDishType(String dishType) {
-        this.dishType = dishType;
+        this.DishType = dishType;
     }
 
     public double getDishPrice() {
-        return dishPrice;
+        return DishPrice;
     }
 
     public void setDishPrice(double dishPrice) {
-        this.dishPrice = dishPrice;
+        this.DishPrice = dishPrice;
     }
 
     public String getDishDescription() {
-        return dishDescription;
+        return DishDescription;
     }
 
     public void setDishDescription(String dishDescription) {
-        this.dishDescription = dishDescription;
+        this.DishDescription = dishDescription;
     }
 
     public String getDishImage() {
-        return dishImage;
+        return DishImage;
     }
 
     public void setDishImage(String dishImage) {
-        this.dishImage = dishImage;
-    }
-
-    public List<DishInventory> getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(List<DishInventory> ingredients) {
-        this.ingredients = ingredients;
+        this.DishImage = dishImage;
     }
 }
