@@ -4,31 +4,45 @@
  */
 package DB;
 
-/**
- *
- * @author LxP
- */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+/**
+ *
+ * @author ADMIN
+ */
 public class DBContext {
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=db1;encrypt=true;trustServerCertificate=true";
-    private static final String USER = "sa";
-    private static final String PASSWORD = "123456";
 
-    public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
+    /***
+     * Tao doi tuong ket noi database tra ve doi tuong connection;
+     */
+    public static Connection conn = null;
 
-    public static void main(String[] args) {
-        try (Connection conn = DBContext.getConnection()) {
-            if (conn != null) {
-                System.out.println("Kết nối database thành công!");
+    public static Connection getConnection() {
+        try {
+            //Buoc 1: Khai bao driver
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            //Buoc 2: Khai bao thong tin server
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=db1;user=sa;password=123456;encrypt=true;trustServerCertificate=true;";
+            // Buoc 3: tao doi tuong ket noi
+            conn = DriverManager.getConnection(url);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conn;
+    }   
+    public static void closeConnection(){
+        try {
+            if(!conn.isClosed()){
+                conn.close();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
